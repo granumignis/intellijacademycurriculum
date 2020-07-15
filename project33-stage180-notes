@@ -1,0 +1,48 @@
+Changes.
+
+method that takes a string as an input
+	this exists as 'inputLoop'
+
+
+===
+
+then it seems things should branch out into a state machine that will ... call the other methods differently depending on on how the state machine is altered
+
+==
+
+Revisit: https://hyperskill.org/projects/33/stages/180/implement
+
+==
+
+Enumerator states
+
+BUYITEM
+FILLMACHINE
+DISPLAYSTATS
+TAKEFROMMACHINE
+
+==
+
+Resarch of 'hints' section for this exercise:
+
+"use the main class to act as the driver"
+"pass the request to the CoffeeMachine Class"
+"Coffee Machine Class should work to process requests"
+"Enum should store the state of the machine"
+
+
+seems that the input passed in should dynamically change the state so that the various functions can run when neede
+d
+
+--
+
+public enum CoffeMachineState {
+	BUYITEM,
+	FILLMACHINE,
+	DISPLAYSTATS,
+	TAKEFROMMACHINE
+}
+
+===
+
+Next Step:
