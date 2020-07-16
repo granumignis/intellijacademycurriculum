@@ -1,13 +1,8 @@
 import java.util.Scanner;
 
-
 public class CoffeeMachine {
 
     static String action = "";
-    int waterPerCup = 200;
-    int milkPerCup = 50;
-    int beansPerCup = 15;
-    int neededCups = 0;
 
     static int waterInCoffeeMachine = 400;
     static int milkInCoffeeMachine = 540;
@@ -15,14 +10,7 @@ public class CoffeeMachine {
     static int moneyInCoffeeMachine = 550;
     static int cupsInCoffeeMachine = 9;
 
-    int waterCups;
-    int milkCups;
-    int beanCups;
-
-    int itemToBuy;
-
-    int makableCups = 0;
-
+    static CoffeeMachineState thisMachineState = CoffeeMachineState.REQUESTACTION;
 
     public static void main(String[] args)
     {
@@ -43,14 +31,9 @@ public class CoffeeMachine {
         System.out.println("");
     }
 
-    public static void buyItem() {
+    public static void buyItem(String s) {
 
-        System.out.println("");
-        System.out.println("What do you want to buy? 1 - espresso, 2- latte, 3 - cappuccino, back - to main menu:");
-
-        Scanner s = new Scanner(System.in);
-
-        String menuChoice = s.next();
+        String menuChoice = s;
 
         if (menuChoice.equals("1") || menuChoice.equals("2") || menuChoice.equals("3"))
         {
@@ -187,6 +170,29 @@ public class CoffeeMachine {
 
     }
 
+    public static void requestInput(String input) {
+
+        Scanner s = new Scanner(System.in);
+
+        switch (thisMachineState) {
+            case BUYITEM:
+                System.out.println("");
+                System.out.println("What do you want to buy? 1 - espresso, 2- latte, 3 - cappuccino, back - to main menu:");
+                buyItem(s.next());
+            case REQUESTACTION:
+                break;
+            case FILLMACHINE:
+                break;
+            case DISPLAYSTATS:
+                break;
+            case TAKEFROMMACHINE:
+                break;
+            default:
+                break;
+
+        }
+    }
+
     public static void inputLoop(Scanner scanner) {
 
         while (!action.equals("exit"))
@@ -195,40 +201,34 @@ public class CoffeeMachine {
             switch (action)
             {
                 case "buy":
-                    buyItem();
+                    thisMachineState = CoffeeMachineState.BUYITEM;
+                    requestInput("s");
                     break;
 
                 case "fill":
+                    thisMachineState = CoffeeMachineState.FILLMACHINE;
                     fillMachine();
                     break;
 
                 case "remaining":
+                    thisMachineState = CoffeeMachineState.DISPLAYSTATS;
                     displayStats();
                     break;
 
                 case "take":
+                    thisMachineState = CoffeeMachineState.TAKEFROMMACHINE;
                     takeFromMachine();
                     break;
             }
         }
     }
 
-    public enum CoffeeMachineState {
-        BUYITEM("buy"),
-        FILLMACHINE("fill"),
-        DISPLAYSTATS("take"),
-        TAKEFROMMACHINE("remaining");
-
-        String keyPhrase;
-
-        CoffeeMachineState(String keyPhrase) {
-            this.keyPhrase = keyPhrase;
-        }
-
-        public String getKeyPhrase() {
-            return keyPhrase;
-        }
-
+    public static enum CoffeeMachineState {
+        BUYITEM(),
+        FILLMACHINE(),
+        DISPLAYSTATS(),
+        TAKEFROMMACHINE(),
+        REQUESTACTION();
     }
 
 }

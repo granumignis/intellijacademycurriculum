@@ -1,0 +1,45 @@
+Write a class that represents the Coffee Machine [ Already exists ]
+
+The class should have a method that takes a string as an input [ Already exists: 'inputLoop' ]
+
+This method should be invoked every time the user inputs a line to the console.
+
+The class should only handle input that comes to it via the inputLoop method and it's argument.
+
+An enum should be created to represent the current state of the coffee machine.
+
+The current state will help to inform the program as to what to do each time the user passes a string into the inputLoop method.
+
+===
+
+Idea for program flow
+
+Program starts in requestAction
+inputLoop sees this and runs the requestInput function
+it uses the result to determine the next function to run
+
+
+===
+
+
+the requestInput function
+
+This is the method that takes a string as an input
+
+
+==
+
+Another rethink of the program
+
+==
+
+The main program loop (input loop) just requests input and passes it to requestInput
+It of course starts by asking for the next action.
+requestinput takes the action and basically acts as the 'main brancher' for the program
+
+
+
+==
+
+Next:
+draw or write out a clear picture of how the logic should work
