@@ -7,7 +7,14 @@ public class CoffeeMachineClassTester {
     {
 
         Scanner s = new Scanner(System.in);
-        testCoffeeMachine.inputLoop(s.next());
+        String userInput = "";
+
+        System.out.println("Write action (buy, fill, take, remaining, exit)");
+
+        while (!userInput.equals("exit")) {
+            userInput = s.next();
+            testCoffeeMachine.inputLoop(userInput);
+        }
 
     }
 
