@@ -26,13 +26,21 @@ public class CoffeeMachine {
             case "take":
                 thisMachineState = CoffeeMachineState.TAKEFROMMACHINE;
                 break;
+            case "1":
+                if (thisMachineState == CoffeeMachineState.BUYITEM) {
+                    System.out.println("Switching thisBuyItem state to BuyItemState.BUYESPRESSO");
+                    thisBuyItemState = BuyItemState.BUYESPRESSO;
+                }
+
         }
 
         switch (thisMachineState)
         {
             case BUYITEM:
-                System.out.println("");
-                System.out.println("What do you want to buy? 1 - espresso, 2- latte, 3 - cappuccino, back - to main menu:");
+                if (thisBuyItemState == BuyItemState.NOTBUYINGITEM) {
+                    System.out.println("");
+                    System.out.println("What do you want to buy? 1 - espresso, 2- latte, 3 - cappuccino, back - to main menu:");
+                }
                 break;
 
             case DISPLAYSTATS:
@@ -53,6 +61,7 @@ public class CoffeeMachine {
             case NOTBUYINGITEM:
                 break;
             case BUYESPRESSO:
+                System.out.println("Entered BUYESPRESSO STATE");
                 buyItem("1");
                 thisBuyItemState = BuyItemState.NOTBUYINGITEM;
                 break;
@@ -100,6 +109,8 @@ public class CoffeeMachine {
                         System.out.println("Sorry, not enough cups!\n");
                         break;
                     }
+
+                    System.out.println("I have enough resources, making you an espresso!\n");
 
                     waterInCoffeeMachine -= 250;
                     beansInCoffeeMachine -= 16;
