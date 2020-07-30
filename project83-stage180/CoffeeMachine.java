@@ -12,11 +12,39 @@ public class CoffeeMachine {
 
     static CoffeeMachineState thisMachineState = CoffeeMachineState.REQUESTACTION;
     static BuyItemState thisBuyItemState = BuyItemState.NOTBUYINGITEM;
+    static FillMachineState thisFillMachineState = FillMachineState.NOTFILLINGMACHINE;
 
     public static void inputLoop(String outsideInput) {
 
+        if (thisMachineState == CoffeeMachineState.FILLMACHINE)
+        {
+            switch(thisFillMachineState)
+            {
+                case NOTFILLINGMACHINE:
+                    break;
+
+                case FILLWATER:
+                    fillWater(Integer.parseInt(outsideInput));
+                    break;
+
+                case FILLMILK:
+                    fillMilk(Integer.parseInt(outsideInput));
+                    break;
+
+                case FILLBEANS:
+                    fillBeans(Integer.parseInt(outsideInput));
+                    break;
+                
+                case FILLCUPS:
+                    fillCups(Integer.parseInt(outsideInput));;
+                    break;
+
+            }
+        }
+
         switch (outsideInput)
         {
+
             case "buy":
                 thisMachineState = CoffeeMachineState.BUYITEM;
                 break;
@@ -25,6 +53,9 @@ public class CoffeeMachine {
                 break;
             case "take":
                 thisMachineState = CoffeeMachineState.TAKEFROMMACHINE;
+                break;
+            case "fill":
+                thisMachineState = CoffeeMachineState.FILLMACHINE;
                 break;
 
 
@@ -58,6 +89,8 @@ public class CoffeeMachine {
                 break;   
 
 
+
+
         }
 
         switch (thisMachineState)
@@ -66,6 +99,7 @@ public class CoffeeMachine {
                 if (thisBuyItemState == BuyItemState.NOTBUYINGITEM) {
                     System.out.println("");
                     System.out.println("What do you want to buy? 1 - espresso, 2- latte, 3 - cappuccino, back - to main menu:");
+                    break;
                 }
                 break;
 
@@ -79,6 +113,36 @@ public class CoffeeMachine {
                 takeFromMachine();
                 showActionRequestMessage();
                 thisMachineState = CoffeeMachineState.REQUESTACTION;
+                break;
+
+            case FILLMACHINE:
+
+                switch (thisFillMachineState)
+                {
+                    case NOTFILLINGMACHINE:
+                        thisFillMachineState = FillMachineState.FILLWATER;
+                        System.out.println("\nWrite how many ml of water do you want to add:");
+                        break;
+                    case FILLWATER:
+                        thisFillMachineState = FillMachineState.FILLMILK; 
+                        System.out.println("\nWrite how many ml of milk do you want to add: (line 137)");
+                        break;
+                    case FILLMILK:
+                        thisFillMachineState = FillMachineState.FILLBEANS;
+                        System.out.println("Write how many ml of coffee beans do you want to add:");
+                        break;
+                    case FILLBEANS:
+                        thisFillMachineState = FillMachineState.FILLCUPS;
+                        System.out.println("Write how many disposable cups of coffee do you want to add:");
+                        break;
+                    case FILLCUPS:
+                        thisFillMachineState = FillMachineState.NOTFILLINGMACHINE;
+                        System.out.println("");
+                        thisMachineState = CoffeeMachineState.REQUESTACTION;
+                        showActionRequestMessage();
+                        break;
+                }
+
                 break;
         }
 
@@ -122,7 +186,6 @@ public class CoffeeMachine {
     public static void buyItem(String s) {
 
         String menuChoice = s;
-        System.out.println(menuChoice);
 
         if (menuChoice.equals("1") || menuChoice.equals("2") || menuChoice.equals("3"))
         {
@@ -222,6 +285,22 @@ public class CoffeeMachine {
         }
     }
 
+    public static void fillWater(int fillAmount) {
+        waterInCoffeeMachine += fillAmount;
+    }
+
+    public static void fillMilk(int fillAmount) {
+        milkInCoffeeMachine += fillAmount;
+    }
+
+    public static void fillBeans(int fillAmount) {
+        beansInCoffeeMachine += fillAmount;
+    }
+
+    public static void fillCups(int fillAmount) {
+        cupsInCoffeeMachine += fillAmount;
+    }
+
     public static void takeFromMachine() {
 
         int tempMoney = moneyInCoffeeMachine;
@@ -229,6 +308,9 @@ public class CoffeeMachine {
         System.out.println("I gave you $" + tempMoney + "\n");
 
     }
+
+
+
 
     public static void showActionRequestMessage() {
         System.out.println("Write action (buy, fill, take, remaining, exit)");
@@ -248,6 +330,14 @@ public class CoffeeMachine {
         BUYLATTE(),
         BUYCAPPUCINO(),
         BACKTOMAINMENU(),
+    }
+
+    public static enum FillMachineState {
+        NOTFILLINGMACHINE(),
+        FILLWATER(),
+        FILLMILK(),
+        FILLBEANS(),
+        FILLCUPS()
     }
 
 }
