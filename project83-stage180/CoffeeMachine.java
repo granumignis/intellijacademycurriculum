@@ -26,11 +26,37 @@ public class CoffeeMachine {
             case "take":
                 thisMachineState = CoffeeMachineState.TAKEFROMMACHINE;
                 break;
+
+
             case "1":
                 if (thisMachineState == CoffeeMachineState.BUYITEM) {
-                    System.out.println("Switching thisBuyItem state to BuyItemState.BUYESPRESSO");
                     thisBuyItemState = BuyItemState.BUYESPRESSO;
+                    break;
                 }
+                break;
+
+            case "2":
+                if (thisMachineState == CoffeeMachineState.BUYITEM) {
+                    thisBuyItemState = BuyItemState.BUYLATTE;
+                    break;
+                }
+                break;
+
+            case "3":
+                if (thisMachineState == CoffeeMachineState.BUYITEM) {
+                    thisBuyItemState = BuyItemState.BUYCAPPUCINO;
+                    break;
+                }
+                break;
+
+            case "back":
+                if (thisMachineState == CoffeeMachineState.BUYITEM) {
+                    showActionRequestMessage();
+                    thisMachineState = CoffeeMachineState.REQUESTACTION;
+                    break;
+                }
+                break;   
+
 
         }
 
@@ -61,14 +87,24 @@ public class CoffeeMachine {
             case NOTBUYINGITEM:
                 break;
             case BUYESPRESSO:
-                System.out.println("Entered BUYESPRESSO STATE");
                 buyItem("1");
                 thisBuyItemState = BuyItemState.NOTBUYINGITEM;
+                thisMachineState = CoffeeMachineState.REQUESTACTION;
+                showActionRequestMessage();
+                break;
+            case BUYLATTE:
+                buyItem("2");
+                thisBuyItemState = BuyItemState.NOTBUYINGITEM;
+                thisMachineState = CoffeeMachineState.REQUESTACTION;
+                showActionRequestMessage();
+                break;
+            case BUYCAPPUCINO:
+                buyItem("3");
+                thisBuyItemState = BuyItemState.NOTBUYINGITEM;
+                thisMachineState = CoffeeMachineState.REQUESTACTION;
+                showActionRequestMessage();
                 break;
         }
-
-
-
 
     }
 
@@ -86,6 +122,7 @@ public class CoffeeMachine {
     public static void buyItem(String s) {
 
         String menuChoice = s;
+        System.out.println(menuChoice);
 
         if (menuChoice.equals("1") || menuChoice.equals("2") || menuChoice.equals("3"))
         {
@@ -140,7 +177,7 @@ public class CoffeeMachine {
                         break;
                     }
 
-                    System.out.println("I have enough resources, making you a coffee!\n");
+                    System.out.println("I have enough resources, making you a latte!\n");
 
 
                     waterInCoffeeMachine -= 350;
@@ -172,6 +209,7 @@ public class CoffeeMachine {
                         break;
                     }
 
+                    System.out.println("I have enough resources, making you a cappucino!\n");
 
                     waterInCoffeeMachine -= 200;
                     milkInCoffeeMachine -= 100;
