@@ -39,3 +39,137 @@ for (int[][] dim2Array : cubic) {
     }
     System.out.println();
 }
+
+//
+
+int[][] c = { 
+   { 40, 30, 25, 30, 15},
+   { 13, 12, 16 },
+   { 101, 125, 114, 131 }
+}; 
+ 
+System.out.print(c.length + " ");
+ 
+for (int[] nestedArray : c) {
+   System.out.print(nestedArray.length + " ");
+}
+
+// ^ this prints 3534
+
+/*
+
+True statements about multi-dimensional arrays:
+
+A multi-dimensional array is an "array of arrays".[ t ]
+It's possible to create an array of arrays with different length. [ t ]
+
+*/
+
+//
+
+
+
+// Example of code to create an 'n x n' array
+// from jetbrains academy user Nikita Zhishchenko
+
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+
+        int digit = scan.nextInt();
+        int[][] arr = new int[digit][digit];
+
+        for (int i = 0; i < digit; i++) {
+
+            for (int k = 0; k < digit; k++) {
+                arr[i][k] = Math.abs(i - k);
+                System.out.print(arr[i][k] + " ");
+            }
+
+            System.out.println("");
+        }
+    }
+}
+
+
+// Another example from 'Louis Le'
+//
+
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        // put your code here
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int[][] array = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < n; j++) {
+
+                array[i][j] = Math.abs(j - i);
+
+            }
+        }
+
+        for (int i = 0; i < n; i++) {
+
+            for (int j = 0; j < n; j++) {
+
+                System.out.print(array[i][j] + " ");
+
+            }
+
+            System.out.println();
+        }
+    }
+}
+
+
+/// I retyped Louis' answer and added spacing and comments to help me understand
+// the result is below
+
+
+import java.util.Scanner;
+
+class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+
+        int[][] array = new int[n][n];
+
+
+        // Define and Fill NxN array
+        for (int i = 0; i < n; i++) { // this is defining the 'x axis' of the array
+
+            for (int j = 0; j < n; j++) { // this is defining the 'y axis' of the array
+                array[i][j] = Math.abs(j - i); // This is filling each 'row' of the NxN array with values
+
+            }
+        }
+
+        // Output the array contents
+
+        for (int i = 0; i < n; i++) { // loop with variable 'i' until 'i' is one less than 'n'
+
+            for (int j = 0; j < n; j++) { // loop with variable 'j' until 'j' is one less than 'n'
+                System.out.print(array[i][j] + " "); // print out the value of the current 'Vector2' we are in during this 'dual loop'
+            }
+
+            System.out.println(); // print a line break after printing out all values for the current array ('i')
+
+        }
+
+
+
+    }
+}
+
+//
+
