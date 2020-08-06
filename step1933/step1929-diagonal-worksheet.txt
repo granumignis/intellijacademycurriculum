@@ -1,0 +1,37 @@
+How do we get from 2,2 to 3,1
+
+Add 1 to i
+subtract 1 from j
+
+both are known at the time it is populated
+
+middle is a constant
+middle for i is the same as middle for j
+it is 2 in both cases
+
+so, statement wise - I can get from 2,2 to 3,1 like...
+
+if (i == 2 + 1 && j == 2 - 1)
+
+if (i == middle + 1 && j == middle - 1)
+
+keep in mind, when the row is created - these vars are in play
+m = 2 [ constant ]
+i = 3
+j = 1
+
+if (i == middle + j && j == middle - j)
+
+if (i == 2 + 1 && j == 2 - 1)
+
+
+Okay, I think this works for this one instance
+
+turns out it only works for this one instance
+
+==
+
+another goal would be 4,0
+how do we get from 3,1 to 4,0?
+
+how do we turn this into a pattern?

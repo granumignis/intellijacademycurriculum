@@ -16,7 +16,14 @@ Then fill:
     The middle column
 
 
-    The main and the secondary diagonals
+    The main diagonal
+
+        middle + 1,1 until n,0 is reached
+        middle - 1,1 until 0,0 is reached
+
+
+    The secondary diagonal
+
 
 with the "*" symbols.
 
@@ -53,29 +60,58 @@ class Main {
 
         String[][] array = new String[n][n]; // create a two-dimensional array of 'n' by 'n'
         int middle = (n - (n/2)) - 1;
+        System.out.println("Middle: " + middle);
 
 
 
         // Define and Fill NxN array
         for (int i = 0; i < n; i++) { // this is defining the 'x axis' of the array
+            System.out.println("Beginning of the i for loop, i = " + i + ", j = N/A");
 
             for (int j = 0; j < n; j++) { // this is defining the 'y axis' of the array
+                System.out.println("Beginning of the j for loop, j = " + j + ", i = " + i);
 
 
                 if (i == middle)
                 {
-                    array[i][j] = "*";
-
+                    //array[i][j] = "0,0";
+                    array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
+                } else if (j == middle)
+                {
+                    //array[i][j] = "*,*";
+                    array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
                 } else
                 {
-                    if (j == middle)
+                    if (i == j)
                     {
-                        array[i][j] = "*";
-                    } else {
-                        array[i][j] = "."; // This is filling each 'row' of the NxN array with values
+                        array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
+                        //array[i][j] = "|,|"; // This is filling each 'row' of the NxN array with values
+                        System.out.println("diagonal:" + i + " " + j);
+                    } else if (i == middle + j && j == middle - j)
+                    {
+                        array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
+                        //array[i][j] = "+,+"; // This is filling each 'row' of the NxN array with values
+                        System.out.println("diagonal2:" + i + " " + j);
+                    } else
+                    {
+                        array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
+                        //System.out.println("normal:" + i + " " + j);
                     }
                 }
 
+
+/*
+                if (i == middle + i && j == middle + j)
+                {
+                    array[i][j] = "|";
+                } else if (i == middle - i && j == middle - j)
+                {
+                    array[i][j] = "%";
+                } else
+                {
+                    array[i][j] = "."; // This is filling each 'row' of the NxN array with values
+                }
+*/
 
             }
         }
