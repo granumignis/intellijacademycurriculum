@@ -64,13 +64,13 @@ class Main {
         int n = 0;
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("Enter an odd number that is not greater than 15.");
+        //System.out.println("Enter an odd number that is not greater than 15.");
 
         n = scanner.nextInt();
 
         while (n % 2 != 0 && n > 15)
         {
-            System.out.println("Enter an odd number that is not greater than 15.");
+            //System.out.println("Enter an odd number that is not greater than 15.");
             n = scanner.nextInt();
         }
 
