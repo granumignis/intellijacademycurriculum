@@ -78,7 +78,7 @@ class Main {
 
         String[][] array = new String[n][n]; // create a two-dimensional array of 'n' by 'n'
         int middle = (n - (n/2)) - 1;
-        System.out.println("Middle: " + middle);
+        //System.out.println("Middle: " + middle);
 
 
         int reverseDiagonalI = middle - middle;
@@ -92,14 +92,14 @@ class Main {
                 reverseDiagonalJ = reverseDiagonalJ - 1;
             }
 
-            System.out.println("Beginning of the i for loop, i = " + i + ", j = N/A");
-            System.out.println("ReverseDiagonalI = " + reverseDiagonalI);
-            System.out.println("ReverseDiagonalJ = " + reverseDiagonalJ);
-            System.out.println("Reverse Diagonal Combo: " + reverseDiagonalI + " , " + reverseDiagonalJ);
+            //System.out.println("Beginning of the i for loop, i = " + i + ", j = N/A");
+            //System.out.println("ReverseDiagonalI = " + reverseDiagonalI);
+            //System.out.println("ReverseDiagonalJ = " + reverseDiagonalJ);
+            //System.out.println("Reverse Diagonal Combo: " + reverseDiagonalI + " , " + reverseDiagonalJ);
 
 
             for (int j = 0; j < n; j++) { // this is defining the 'y axis' of the array
-                System.out.println("Beginning of the j for loop, i = " + i + ", j = " + j);
+                //System.out.println("Beginning of the j for loop, i = " + i + ", j = " + j);
 
 
                 if (i == middle)
@@ -121,13 +121,13 @@ class Main {
                         //array[i][j] = i + "|" + j; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = "|,|"; // This is filling each 'row' of the NxN array with values
                         array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
-                        System.out.println("diagonal:" + i + " " + j);
+                        //System.out.println("diagonal:" + i + " " + j);
                     } else if (i == reverseDiagonalI && j == reverseDiagonalJ)
                     {
                         //array[i][j] = i + "+" + j; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = "+,+"; // This is filling each 'row' of the NxN array with values
                         array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
-                        System.out.println("diagonal2:" + i + " " + j);
+                        //System.out.println("diagonal2:" + i + " " + j);
                     } else
                     {
                         array[i][j] = "."; // This is filling each 'row' of the NxN array with values
