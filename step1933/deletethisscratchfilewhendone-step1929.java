@@ -105,7 +105,7 @@ class Main {
                 if (i == middle)
                 {
                     //array[i][j] = "0,0";
-                    array[i][j] = i + "*" + j; // This is filling each 'row' of the NxN array with values
+                    array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
 
 
 
@@ -113,22 +113,25 @@ class Main {
                 } else if (j == middle)
                 {
                     //array[i][j] = "*,*";
-                    array[i][j] = i + "*" + j; // This is filling each 'row' of the NxN array with values
+                    array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
                 } else
                 {
                     if (i == j)
                     {
-                        array[i][j] = i + "|" + j; // This is filling each 'row' of the NxN array with values
+                        //array[i][j] = i + "|" + j; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = "|,|"; // This is filling each 'row' of the NxN array with values
+                        array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
                         System.out.println("diagonal:" + i + " " + j);
                     } else if (i == reverseDiagonalI && j == reverseDiagonalJ)
                     {
-                        array[i][j] = i + "+" + j; // This is filling each 'row' of the NxN array with values
+                        //array[i][j] = i + "+" + j; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = "+,+"; // This is filling each 'row' of the NxN array with values
+                        array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
                         System.out.println("diagonal2:" + i + " " + j);
                     } else
                     {
-                        array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
+                        array[i][j] = "."; // This is filling each 'row' of the NxN array with values
+                        //array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
                         //System.out.println("normal:" + i + " " + j);
                     }
                 }
