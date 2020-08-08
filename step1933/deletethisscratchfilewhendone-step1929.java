@@ -68,8 +68,7 @@ class Main {
 
         n = scanner.nextInt();
 
-        while (n % 2 != 0 && n > 15)
-        {
+        while (n % 2 != 0 && n > 15) {
             //System.out.println("Enter an odd number that is not greater than 15.");
             n = scanner.nextInt();
         }
@@ -77,17 +76,16 @@ class Main {
 
 
         String[][] array = new String[n][n]; // create a two-dimensional array of 'n' by 'n'
-        int middle = (n - (n/2)) - 1;
+        int middle = (n - (n / 2)) - 1;
         //System.out.println("Middle: " + middle);
 
 
         int reverseDiagonalI = middle - middle;
-        int reverseDiagonalJ = middle*2;
+        int reverseDiagonalJ = middle * 2;
 
         // Define and Fill NxN array
         for (int i = 0; i < n; i++) { // this is defining the 'x axis' of the array
-            if (i > 0)
-            {
+            if (i > 0) {
                 reverseDiagonalI = reverseDiagonalI + 1;
                 reverseDiagonalJ = reverseDiagonalJ - 1;
             }
@@ -102,34 +100,28 @@ class Main {
                 //System.out.println("Beginning of the j for loop, i = " + i + ", j = " + j);
 
 
-                if (i == middle)
-                {
+                if (i == middle) {
                     //array[i][j] = "0,0";
                     array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
 
 
 
 
-                } else if (j == middle)
-                {
+                } else if (j == middle) {
                     //array[i][j] = "*,*";
                     array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
-                } else
-                {
-                    if (i == j)
-                    {
+                } else {
+                    if (i == j) {
                         //array[i][j] = i + "|" + j; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = "|,|"; // This is filling each 'row' of the NxN array with values
                         array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
                         //System.out.println("diagonal:" + i + " " + j);
-                    } else if (i == reverseDiagonalI && j == reverseDiagonalJ)
-                    {
+                    } else if (i == reverseDiagonalI && j == reverseDiagonalJ) {
                         //array[i][j] = i + "+" + j; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = "+,+"; // This is filling each 'row' of the NxN array with values
                         array[i][j] = "*"; // This is filling each 'row' of the NxN array with values
                         //System.out.println("diagonal2:" + i + " " + j);
-                    } else
-                    {
+                    } else {
                         array[i][j] = "."; // This is filling each 'row' of the NxN array with values
                         //array[i][j] = i + "," + j; // This is filling each 'row' of the NxN array with values
                         //System.out.println("normal:" + i + " " + j);
@@ -158,7 +150,7 @@ class Main {
         for (int i = 0; i < n; i++) { // loop with variable 'i' until 'i' is one less than 'n'
 
             for (int j = 0; j < n; j++) { // loop with variable 'j' until 'j' is one less than 'n'
-                System.out.print(array[i][j] + " "); // print out the value of the current 'Vector2' we are in during this 'dual loop'
+                System.out.print(array[i][j] + " "); // print out the value of the current 'Vector2'
             }
 
             System.out.println(); // print a line break after printing out all values for the current array ('i')
